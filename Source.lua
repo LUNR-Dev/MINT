@@ -77,6 +77,10 @@ function lib:Make(Text)
 	Close.TextColor3 = Color3.fromRGB(0, 0, 0);
 	Close.TextSize = 14;
 
+	Close.MouseButton1Down:Connect(function()
+game.CoreGui.MINT:Destroy()
+		end)
+
 	local UICorner_3 = _New_("UICorner", Close);
 	UICorner_3.CornerRadius = UDim.new(1, 0);
 
