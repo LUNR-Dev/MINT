@@ -502,6 +502,7 @@ game.CoreGui.MINT:Destroy()
 		function stuff:ColorPicker(Text,callback)
 
 			
+
 local Cpicker = _New_("Frame", Items);
 Cpicker.BackgroundColor3 = Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993);
 Cpicker.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.000004440546036);
@@ -535,27 +536,25 @@ Checked.Name = "Checked";
 Checked.Position = UDim2.new(0.8409251570701599, 0, 0.2631579041481018, 0);
 Checked.Size = UDim2.new(0, 44, 0, 18);
 
-local UICorner_0 = _New_("UICorner", Checked);
-
-local ColorUI = _New_("Frame", Cpicker);
+local ColorUI = _New_("Frame", main);
 ColorUI.BackgroundColor3 = Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993);
 ColorUI.BorderColor3 = Color3.fromRGB(38.0000015348196, 38.0000015348196, 38.0000015348196);
 ColorUI.BorderSizePixel = 0;
 ColorUI.Name = "ColorUI";
-ColorUI.Position = UDim2.new(-0.0036231607664376497, 0, 1.2187576293945312, 0);
-ColorUI.Size = UDim2.new(1, 0, 4.47629976272583, 0);
+ColorUI.Position = UDim2.new(1.0162773132324219, 0, 0.13928571343421936, 0);
+ColorUI.Size = UDim2.new(0.6318408250808716, 0, 0.6021998524665833, 0);
 ColorUI.Visible = false;
 ColorUI.ZIndex = 2;
 
-local UICorner_1 = _New_("UICorner", ColorUI);
-UICorner_1.CornerRadius = UDim.new(0, 6);
+local UICorner = _New_("UICorner", ColorUI);
+UICorner.CornerRadius = UDim.new(0, 6);
 
 local HueSat = _New_("ImageLabel", ColorUI);
 HueSat.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
 HueSat.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.000004440546036);
 HueSat.Name = "HueSat";
 HueSat.Position = UDim2.new(0, 7, 0, 5);
-HueSat.Size = UDim2.new(0, 330, 0, 159);
+HueSat.Size = UDim2.new(0, 192, 0, 159);
 HueSat.ZIndex = 2;
 HueSat.Image = "rbxassetid://698052001";
 
@@ -567,14 +566,15 @@ Frame.BorderColor3 = Color3.fromRGB(0, 0, 0);
 Frame.Rotation = 45;
 Frame.Size = UDim2.new(0, 4, 0, 4);
 
-local UICorner_2 = _New_("UICorner", HueSat);
+local UICorner_0 = _New_("UICorner", HueSat);
 
 local Value = _New_("ImageLabel", ColorUI);
 Value.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
 Value.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.000004440546036);
 Value.Name = "Value";
-Value.Position = UDim2.new(0, 346, 0, 5);
+Value.Position = UDim2.new(0, 215, 0, 4);
 Value.Size = UDim2.new(0, 20, 0, 159);
+Value.ZIndex = 2;
 Value.Image = "rbxassetid://3641079629";
 
 local Frame_0 = _New_("TextLabel", Value);
@@ -585,6 +585,7 @@ Frame_0.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53
 Frame_0.Name = "Frame";
 Frame_0.Position = UDim2.new(1, -6, 0, 0);
 Frame_0.Size = UDim2.new(0, 16, 0, 16);
+Frame_0.ZIndex = 2;
 Frame_0.Font = Enum.Font.SourceSans;
 Frame_0.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
 Frame_0.Text = "◄";
@@ -593,9 +594,7 @@ Frame_0.TextSize = 12;
 Frame_0.TextStrokeColor3 = Color3.fromRGB(130.0000074505806, 130.0000074505806, 130.0000074505806);
 Frame_0.TextStrokeTransparency = 0;
 
-local UICorner_3 = _New_("UICorner", Value);
-
-local LocalScript_0 = _New_("LocalScript", ColorUI);
+local UICorner_0 = _New_("UICorner", Checked);
 
 --Scripts
 task.spawn(function()--[[LocalScript]] 
@@ -607,41 +606,50 @@ task.spawn(function()--[[LocalScript]]
 	script.Parent.MouseButton1Down:Connect(function()
 		if pick == false then
 			pick = true
-			script.Parent.Parent.ColorUI.Visible = pick
+			ColorUI.Visible = pick
 		else
 			pick = false
-			script.Parent.Parent.ColorUI.Visible = pick
+			ColorUI.Visible = pick
 		end
 	end)
 end);
 
-task.spawn(function()--[[LocalScript_0]] 
-	local script = LocalScript_0;
 
 
-	
+
+
+local UICorner_1 = _New_("UICorner", Value);
+
+local LocalScript = _New_("LocalScript", ColorUI);
+
+--Scripts
+task.spawn(function()--[[LocalScript]] 
+	local script = LocalScript;
+
+
+
 	local gui = ColorUI
 	local pickingHueSat = false
 	local pickingValue = false
 	local update
 	local volor = Checked
 	local value = volor.BackgroundColor3
-	
+
 	local hue = 0
 	local sat = 0
 	local val = 1
-	
+
 	local function updateHueSat(input, obj)
 		hue = (obj.AbsoluteSize.X-(input.Position.X-obj.AbsolutePosition.X))/obj.AbsoluteSize.X
 		sat = (obj.AbsoluteSize.Y-(input.Position.Y-obj.AbsolutePosition.Y))/obj.AbsoluteSize.Y
 		return (input.Position.X-obj.AbsolutePosition.X)/obj.AbsoluteSize.X, (input.Position.Y-obj.AbsolutePosition.Y)/obj.AbsoluteSize.Y
 	end
-	
+
 	local function updateValue(input, obj)
 		val = (obj.AbsoluteSize.Y-(input.Position.Y-obj.AbsolutePosition.Y))/obj.AbsoluteSize.Y
 		return (input.Position.Y-obj.AbsolutePosition.Y)/obj.AbsoluteSize.Y
 	end
-	
+
 	gui.HueSat.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
 			pickingHueSat = true
@@ -655,7 +663,7 @@ task.spawn(function()--[[LocalScript_0]]
 			volor.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
 		end
 	end)
-	
+
 	gui.Value.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
 			pickingValue = true
@@ -666,23 +674,23 @@ task.spawn(function()--[[LocalScript_0]]
 			end)
 			local y = updateValue(input, gui.Value)
 			gui.Value.Frame.Position = UDim2.new(1,-6,y,0)
-			
-			
-		--	gui.Color.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
-			
-		
-		
+
+
+			--	gui.Color.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
+
+
+
 			volor.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
-			
-		
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
 		end
 	end)
-	
+
 	game:GetService("UserInputService").InputChanged:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseMovement then
 			if pickingHueSat then
@@ -705,18 +713,19 @@ task.spawn(function()--[[LocalScript_0]]
 				end
 				gui.HueSat.Frame.Position = UDim2.new(x,0,y,0)
 				volor.BackgroundColor3 = Color3.fromHSV(hue,sat,val)
-				
-				
-				
-				
-				
-			--	print(volor.BackgroundColor3)
-	-- Callback stuff here
+
+
+
+
+
+
+				-- Callback stuff here
+
 				pcall(function()
-				callback(value)
+					callback(Color3.fromHSV(hue, sat, val))
 				end)
-				
-				
+
+
 			end
 			if pickingValue then
 				local y = updateValue(input, gui.Value)
@@ -730,22 +739,14 @@ task.spawn(function()--[[LocalScript_0]]
 				end
 				gui.Value.Frame.Position = UDim2.new(1,-6,y,0)
 				volor.BackgroundColor3 = Color3.fromHSV(hue,sat,val)
-				
-				
-				
-				
-				
-				
-			
-				
-				
-				
-				
+
+
+
 			end
 		end
 	end)
-	
-	
+
+
 end);
 
 
