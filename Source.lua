@@ -604,10 +604,10 @@ task.spawn(function()--[[LocalScript]]
 
 	local pick = false
 	
-	script.Parent.MouseButton1Down:Connect(function()
+	Action.MouseButton1Down:Connect(function()
 		if pick == false then
 			pick = true
-			sColorUI.Visible = pick
+			ColorUI.Visible = pick
 		else
 			pick = false
 			ColorUI.Visible = pick
