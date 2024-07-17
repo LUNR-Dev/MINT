@@ -620,7 +620,7 @@ task.spawn(function()--[[LocalScript_0]]
 
 
 	
-	local gui = script.Parent
+	local gui = ColorUI
 	local pickingHueSat = false
 	local pickingValue = false
 	local update
