@@ -499,7 +499,255 @@ game.CoreGui.MINT:Destroy()
 		--end slider
 
 
+		function stuff:ColorPicker(Text,callback)
 
+local Cpicker = _New_("Frame", Items);
+Cpicker.BackgroundColor3 = Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993);
+Cpicker.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.000004440546036);
+Cpicker.Name = "Cpicker";
+Cpicker.Position = UDim2.new(0.1223958358168602, 0, -1.059638137235197e-07, 0);
+Cpicker.Size = UDim2.new(0, 368, 0, 38);
+
+local UICorner = _New_("UICorner", Cpicker);
+
+local Action = _New_("TextButton", Cpicker);
+Action.AutoButtonColor = false;
+Action.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+Action.BackgroundTransparency = 1;
+Action.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.000004440546036);
+Action.Name = "Action";
+Action.Position = UDim2.new(0.016227180138230324, 0, 0, 0);
+Action.Size = UDim2.new(0.9837728142738342, 0, 1, 0);
+Action.Font = Enum.Font.Unknown;
+Action.FontFace = Font.new("rbxasset://fonts/families/Ubuntu.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+Action.Text = Text or "No Text Found";
+Action.TextColor3 = Color3.fromRGB(179.000004529953, 179.000004529953, 179.000004529953);
+Action.TextSize = 14;
+Action.TextXAlignment = Enum.TextXAlignment.Left;
+
+local LocalScript = _New_("LocalScript", Action);
+
+local Checked = _New_("Frame", Cpicker);
+Checked.BackgroundColor3 = Color3.fromRGB(255, 0, 0);
+Checked.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.000004440546036);
+Checked.Name = "Checked";
+Checked.Position = UDim2.new(0.8409251570701599, 0, 0.2631579041481018, 0);
+Checked.Size = UDim2.new(0, 44, 0, 18);
+
+local UICorner_0 = _New_("UICorner", Checked);
+
+local ColorUI = _New_("Frame", Cpicker);
+ColorUI.BackgroundColor3 = Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993);
+ColorUI.BorderColor3 = Color3.fromRGB(38.0000015348196, 38.0000015348196, 38.0000015348196);
+ColorUI.BorderSizePixel = 0;
+ColorUI.Name = "ColorUI";
+ColorUI.Position = UDim2.new(-0.0036231607664376497, 0, 1.2187576293945312, 0);
+ColorUI.Size = UDim2.new(1, 0, 4.47629976272583, 0);
+ColorUI.Visible = false;
+
+local UICorner_1 = _New_("UICorner", ColorUI);
+UICorner_1.CornerRadius = UDim.new(0, 6);
+
+local HueSat = _New_("ImageLabel", ColorUI);
+HueSat.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+HueSat.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.000004440546036);
+HueSat.Name = "HueSat";
+HueSat.Position = UDim2.new(0, 7, 0, 5);
+HueSat.Size = UDim2.new(0, 330, 0, 159);
+HueSat.Image = "rbxassetid://698052001";
+
+local Frame = _New_("Frame", HueSat);
+Frame.AnchorPoint = Vector2.new(0.5, 0.5);
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+Frame.BackgroundTransparency = 0.20000000298023224;
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0);
+Frame.Rotation = 45;
+Frame.Size = UDim2.new(0, 4, 0, 4);
+
+local UICorner_2 = _New_("UICorner", HueSat);
+
+local Value = _New_("ImageLabel", ColorUI);
+Value.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+Value.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.000004440546036);
+Value.Name = "Value";
+Value.Position = UDim2.new(0, 346, 0, 5);
+Value.Size = UDim2.new(0, 20, 0, 159);
+Value.Image = "rbxassetid://3641079629";
+
+local Frame_0 = _New_("TextLabel", Value);
+Frame_0.AnchorPoint = Vector2.new(0, 0.5);
+Frame_0.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+Frame_0.BackgroundTransparency = 1;
+Frame_0.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.000004440546036);
+Frame_0.Name = "Frame";
+Frame_0.Position = UDim2.new(1, -6, 0, 0);
+Frame_0.Size = UDim2.new(0, 16, 0, 16);
+Frame_0.Font = Enum.Font.SourceSans;
+Frame_0.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+Frame_0.Text = "◄";
+Frame_0.TextColor3 = Color3.fromRGB(0, 0, 0);
+Frame_0.TextSize = 12;
+Frame_0.TextStrokeColor3 = Color3.fromRGB(130.0000074505806, 130.0000074505806, 130.0000074505806);
+Frame_0.TextStrokeTransparency = 0;
+
+local UICorner_3 = _New_("UICorner", Value);
+
+local LocalScript_0 = _New_("LocalScript", ColorUI);
+
+--Scripts
+task.spawn(function()--[[LocalScript]] 
+	local script = LocalScript;
+
+
+	local pick = false
+	
+	script.Parent.MouseButton1Down:Connect(function()
+		if pick == false then
+			pick = true
+			script.Parent.Parent.ColorUI.Visible = pick
+		else
+			pick = false
+			script.Parent.Parent.ColorUI.Visible = pick
+		end
+	end)
+end);
+
+task.spawn(function()--[[LocalScript_0]] 
+	local script = LocalScript_0;
+
+
+	
+	local gui = script.Parent
+	local pickingHueSat = false
+	local pickingValue = false
+	local update
+	local volor = Checked
+	local value = volor.BackgroundColor3
+	
+	local hue = 0
+	local sat = 0
+	local val = 1
+	
+	local function updateHueSat(input, obj)
+		hue = (obj.AbsoluteSize.X-(input.Position.X-obj.AbsolutePosition.X))/obj.AbsoluteSize.X
+		sat = (obj.AbsoluteSize.Y-(input.Position.Y-obj.AbsolutePosition.Y))/obj.AbsoluteSize.Y
+		return (input.Position.X-obj.AbsolutePosition.X)/obj.AbsoluteSize.X, (input.Position.Y-obj.AbsolutePosition.Y)/obj.AbsoluteSize.Y
+	end
+	
+	local function updateValue(input, obj)
+		val = (obj.AbsoluteSize.Y-(input.Position.Y-obj.AbsolutePosition.Y))/obj.AbsoluteSize.Y
+		return (input.Position.Y-obj.AbsolutePosition.Y)/obj.AbsoluteSize.Y
+	end
+	
+	gui.HueSat.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			pickingHueSat = true
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					pickingHueSat = false
+				end
+			end)
+			local x, y = updateHueSat(input, gui.HueSat)
+			gui.HueSat.Frame.Position = UDim2.new(x,0,y,0)
+			volor.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
+		end
+	end)
+	
+	gui.Value.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			pickingValue = true
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					pickingValue = false
+				end
+			end)
+			local y = updateValue(input, gui.Value)
+			gui.Value.Frame.Position = UDim2.new(1,-6,y,0)
+			
+			
+		--	gui.Color.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
+			
+		
+		
+			volor.BackgroundColor3 = Color3.fromHSV(hue, sat, val)
+			
+		
+
+			
+			
+			
+			
+		end
+	end)
+	
+	game:GetService("UserInputService").InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement then
+			if pickingHueSat then
+				local x, y = updateHueSat(input, gui.HueSat)
+				if x <= 0 then
+					x = 0
+					hue = 1
+				end
+				if x >= 1 then
+					x = 1
+					hue = 0
+				end
+				if y <= 0 then
+					y = 0
+					sat = 1
+				end
+				if y >= 1 then
+					y = 1
+					sat = 0
+				end
+				gui.HueSat.Frame.Position = UDim2.new(x,0,y,0)
+				volor.BackgroundColor3 = Color3.fromHSV(hue,sat,val)
+				
+				
+				
+				
+				
+			--	print(volor.BackgroundColor3)
+	-- Callback stuff here
+				
+				pcall(function()
+					callback(value)
+				end)
+				
+				
+			end
+			if pickingValue then
+				local y = updateValue(input, gui.Value)
+				if y <= 0 then
+					y = 0
+					val = 1
+				end
+				if y >= 1 then
+					y = 1
+					val = 0
+				end
+				gui.Value.Frame.Position = UDim2.new(1,-6,y,0)
+				volor.BackgroundColor3 = Color3.fromHSV(hue,sat,val)
+				
+				
+				
+				
+				
+				
+			
+				
+				
+				
+				
+			end
+		end
+	end)
+	
+	
+end);
+
+		end
+		--end color picker
 		--End stuff	
 
 
