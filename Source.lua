@@ -535,19 +535,20 @@ Checked.Position = UDim2.new(0.8409251570701599, 0, 0.2631579041481018, 0);
 Checked.Size = UDim2.new(0, 44, 0, 18);
 
 local UICorner_0 = _New_("UICorner", Checked);
+--COLOR UI
 
-local ColorUI = _New_("Frame", Cpicker);
+local ColorUI = _New_("Frame", main);
 ColorUI.BackgroundColor3 = Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993);
 ColorUI.BorderColor3 = Color3.fromRGB(38.0000015348196, 38.0000015348196, 38.0000015348196);
 ColorUI.BorderSizePixel = 0;
 ColorUI.Name = "ColorUI";
-ColorUI.Position = UDim2.new(-0.0036231607664376497, 0, 1.2187576293945312, 0);
-ColorUI.Size = UDim2.new(1, 0, 4.47629976272583, 0);
+ColorUI.Position = UDim2.new(0.009044438600540161, 0, 0.9997732043266296, 0);
+ColorUI.Size = UDim2.new(0.9900497794151306, 0, 0.6298708319664001, 0);
 ColorUI.Visible = false;
-			ColorUI.ZIndex = 2;
+ColorUI.ZIndex = 2;
 
-local UICorner_1 = _New_("UICorner", ColorUI);
-UICorner_1.CornerRadius = UDim.new(0, 6);
+local UICorner = _New_("UICorner", ColorUI);
+UICorner.CornerRadius = UDim.new(0, 6);
 
 local HueSat = _New_("ImageLabel", ColorUI);
 HueSat.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
@@ -555,9 +556,8 @@ HueSat.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.
 HueSat.Name = "HueSat";
 HueSat.Position = UDim2.new(0, 7, 0, 5);
 HueSat.Size = UDim2.new(0, 330, 0, 159);
+HueSat.ZIndex = 2;
 HueSat.Image = "rbxassetid://698052001";
-
-			HueSat.ZIndex = 2;
 
 local Frame = _New_("Frame", HueSat);
 Frame.AnchorPoint = Vector2.new(0.5, 0.5);
@@ -566,9 +566,8 @@ Frame.BackgroundTransparency = 0.20000000298023224;
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0);
 Frame.Rotation = 45;
 Frame.Size = UDim2.new(0, 4, 0, 4);
-			Frame.ZIndex = 2;
 
-local UICorner_2 = _New_("UICorner", HueSat);
+local UICorner_0 = _New_("UICorner", HueSat);
 
 local Value = _New_("ImageLabel", ColorUI);
 Value.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
@@ -576,8 +575,8 @@ Value.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53.0
 Value.Name = "Value";
 Value.Position = UDim2.new(0, 346, 0, 5);
 Value.Size = UDim2.new(0, 20, 0, 159);
+Value.ZIndex = 2;
 Value.Image = "rbxassetid://3641079629";
-			Value.ZIndex = 2;
 
 local Frame_0 = _New_("TextLabel", Value);
 Frame_0.AnchorPoint = Vector2.new(0, 0.5);
@@ -587,6 +586,7 @@ Frame_0.BorderColor3 = Color3.fromRGB(27.000002190470695, 42.000001296401024, 53
 Frame_0.Name = "Frame";
 Frame_0.Position = UDim2.new(1, -6, 0, 0);
 Frame_0.Size = UDim2.new(0, 16, 0, 16);
+Frame_0.ZIndex = 2;
 Frame_0.Font = Enum.Font.SourceSans;
 Frame_0.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
 Frame_0.Text = "◄";
@@ -594,11 +594,8 @@ Frame_0.TextColor3 = Color3.fromRGB(0, 0, 0);
 Frame_0.TextSize = 12;
 Frame_0.TextStrokeColor3 = Color3.fromRGB(130.0000074505806, 130.0000074505806, 130.0000074505806);
 Frame_0.TextStrokeTransparency = 0;
-			Frame_0.ZIndex = 2;
 
-local UICorner_3 = _New_("UICorner", Value);
-
-local LocalScript_0 = _New_("LocalScript", ColorUI);
+local UICorner_1 = _New_("UICorner", Value);
 
 --Scripts
 task.spawn(function()--[[LocalScript]] 
@@ -610,10 +607,10 @@ task.spawn(function()--[[LocalScript]]
 	script.Parent.MouseButton1Down:Connect(function()
 		if pick == false then
 			pick = true
-			script.Parent.Parent.ColorUI.Visible = pick
+			sColorUI.Visible = pick
 		else
 			pick = false
-			script.Parent.Parent.ColorUI.Visible = pick
+			ColorUI.Visible = pick
 		end
 	end)
 end);
