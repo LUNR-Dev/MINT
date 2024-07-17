@@ -11,7 +11,7 @@ local _New_ = Instance.new;
 --objects
 local MINT = _New_("ScreenGui", game.CoreGui);
 MINT.Name = "MINT";
-MINT.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+MINT.ZIndexBehavior = Enum.ZIndexBehavior.Global;
 
 
 
@@ -544,6 +544,7 @@ ColorUI.Name = "ColorUI";
 ColorUI.Position = UDim2.new(-0.0036231607664376497, 0, 1.2187576293945312, 0);
 ColorUI.Size = UDim2.new(1, 0, 4.47629976272583, 0);
 ColorUI.Visible = false;
+			ColorUI.ZIndex = 2;
 
 local UICorner_1 = _New_("UICorner", ColorUI);
 UICorner_1.CornerRadius = UDim.new(0, 6);
@@ -556,6 +557,8 @@ HueSat.Position = UDim2.new(0, 7, 0, 5);
 HueSat.Size = UDim2.new(0, 330, 0, 159);
 HueSat.Image = "rbxassetid://698052001";
 
+			HueSat.ZIndex = 2;
+
 local Frame = _New_("Frame", HueSat);
 Frame.AnchorPoint = Vector2.new(0.5, 0.5);
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
@@ -563,6 +566,7 @@ Frame.BackgroundTransparency = 0.20000000298023224;
 Frame.BorderColor3 = Color3.fromRGB(0, 0, 0);
 Frame.Rotation = 45;
 Frame.Size = UDim2.new(0, 4, 0, 4);
+			Frame.ZIndex = 2;
 
 local UICorner_2 = _New_("UICorner", HueSat);
 
@@ -573,6 +577,7 @@ Value.Name = "Value";
 Value.Position = UDim2.new(0, 346, 0, 5);
 Value.Size = UDim2.new(0, 20, 0, 159);
 Value.Image = "rbxassetid://3641079629";
+			Value.ZIndex = 2;
 
 local Frame_0 = _New_("TextLabel", Value);
 Frame_0.AnchorPoint = Vector2.new(0, 0.5);
@@ -589,6 +594,7 @@ Frame_0.TextColor3 = Color3.fromRGB(0, 0, 0);
 Frame_0.TextSize = 12;
 Frame_0.TextStrokeColor3 = Color3.fromRGB(130.0000074505806, 130.0000074505806, 130.0000074505806);
 Frame_0.TextStrokeTransparency = 0;
+			Frame_0.ZIndex = 2;
 
 local UICorner_3 = _New_("UICorner", Value);
 
